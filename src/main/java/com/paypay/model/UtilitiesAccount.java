@@ -1,5 +1,6 @@
 package com.paypay.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -25,6 +26,12 @@ public class UtilitiesAccount {
 
     @Column(name = "account_status")
     private String accountStatus;
+
+    @Column(name = "amount")
+    private BigDecimal amount;
+
+    @Column(name = "currency_type")
+    private String currencyType;
     
     @Column(name = "bank_name")
     private String bankName;

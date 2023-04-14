@@ -9,5 +9,9 @@ import com.paypay.model.UtilitiesAccount;
 
 @Repository
 public interface UtilitiesAccountRepo extends JpaRepository<UtilitiesAccount, BigDecimal> {
-    UtilitiesAccount findByAccountNumberAndBankName(String accountNumber, String bankName);
+    UtilitiesAccount findByAccountNumberAndBankNameAndCurrencyType(String accountNumber, String bankName, String currencyType);
+    UtilitiesAccount findByAccountNumber(String accountNumber);
+    UtilitiesAccount findByAccountNumberAndCurrencyType(String accountNumber, String currencyType);
+    UtilitiesAccount findByAccountNumberAndBankName(String accountNumber, String bankname);
+    
 }
