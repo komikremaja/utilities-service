@@ -38,4 +38,8 @@ public class UtilitiesAccount {
 
     @Column(name = "created_date")
     private LocalDateTime createdDate;
+
+    
+    @Column(name = "last_update")
+    private LocalDateTime lastUpdate;
 }

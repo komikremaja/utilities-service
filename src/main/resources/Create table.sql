@@ -14,5 +14,6 @@ CREATE TABLE utilities_account_data(
     currency_type varchar(20) not null,
     bank_name varchar(50) not null,
     created_date timestamp not null,
+    last_update timestamp not null,
     PRIMARY KEY(id_account)
 );  
