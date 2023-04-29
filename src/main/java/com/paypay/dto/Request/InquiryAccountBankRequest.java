@@ -9,6 +9,10 @@ public class InquiryAccountBankRequest {
     
     @NotEmpty(message = "Field must be fill")
     private String accountNumber;
+    
+    @NotEmpty(message = "Field must be fill")
     private String bankName;
+    
+    @NotEmpty(message = "Field must be fill")
     private String accountType;
 }

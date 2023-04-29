@@ -72,21 +72,24 @@ public class UtilitiesImpl {
     public Response inquiryDataAccountBank(InquiryAccountBankRequest request) throws Exception {
         ResponseAccount responseAccount = new ResponseAccount();
         UtilitiesAccount accountDb = null;
-        if ((request.getAccountType() != null && !request.getAccountType().isEmpty())
-                && (request.getBankName() != null && !request.getBankName().isEmpty())) {
-            accountDb = utilitiesAccountRepo.findByAccountNumberAndBankNameAndCurrencyType(
+        // if ((request.getAccountType() != null && !request.getAccountType().isEmpty())
+        //         && (request.getBankName() != null && !request.getBankName().isEmpty())) {
+        //     accountDb = utilitiesAccountRepo.findByAccountNumberAndBankNameAndCurrencyType(
+        //             request.getAccountNumber(),
+        //             request.getBankName(), request.getAccountType());
+        // } else if (request.getAccountType() != null && !request.getAccountType().isEmpty()) {
+        //     accountDb = utilitiesAccountRepo.findByAccountNumberAndCurrencyType(request.getAccountNumber(),
+        //             request.getAccountType());
+        // } else if (request.getBankName() != null && !request.getBankName().isEmpty()) {
+        //     accountDb = utilitiesAccountRepo.findByAccountNumberAndBankName(request.getAccountNumber(),
+        //             request.getBankName());
+        // } else {
+        //     accountDb = utilitiesAccountRepo.findByAccountNumber(request.getAccountNumber());
+        // }
+
+        accountDb = utilitiesAccountRepo.findByAccountNumberAndBankNameAndCurrencyType(
                     request.getAccountNumber(),
                     request.getBankName(), request.getAccountType());
-        } else if (request.getAccountType() != null && !request.getAccountType().isEmpty()) {
-            accountDb = utilitiesAccountRepo.findByAccountNumberAndCurrencyType(request.getAccountNumber(),
-                    request.getAccountType());
-        } else if (request.getBankName() != null && !request.getBankName().isEmpty()) {
-            accountDb = utilitiesAccountRepo.findByAccountNumberAndBankName(request.getAccountNumber(),
-                    request.getBankName());
-        } else {
-            accountDb = utilitiesAccountRepo.findByAccountNumber(request.getAccountNumber());
-        }
-
         if (accountDb == null) {
             throw new BadRequestException("Data Rekening not found");
         }
