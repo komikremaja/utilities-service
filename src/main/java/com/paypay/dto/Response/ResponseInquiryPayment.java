@@ -18,6 +18,8 @@ public class ResponseInquiryPayment {
     
     private BigDecimal totalAmount;
     
+    private BigDecimal kreditAmount;
+    
     private String sourceAccount;
 
     private String currency;
