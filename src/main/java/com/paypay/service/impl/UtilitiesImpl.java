@@ -133,6 +133,9 @@ public class UtilitiesImpl {
         bankCode.put("003", "Mandiri");
 
         String bankCodeVaNumber = request.getVaNumber().substring(4, 7);
+        if(!bankCode.get(bankCodeVaNumber).equalsIgnoreCase(request.getBankName())){
+            throw new BadRequestException("Virtual Account tidak tersedia");
+        }
         tagihanPembayaran.setBankPayment(request.getBankName());
         tagihanPembayaran.setSourceAccount(request.getSourceAccount());
         // String bankCode = request.getVaNumber().substring(4, 7);
@@ -262,11 +265,13 @@ public class UtilitiesImpl {
         accountDebitCredit.add(accountXchangeCredit);
         accountDebitCredit.add(accountXchangeDebit);
         accountDebitCredit.add(destinationAccount);
-        utilitiesAccountRepo.saveAll(accountDebitCredit);
+        utilitiesAccountRepo.saveAll(accountDebitCredit); 
         // Update Payment Status
         ReconPaymentStatusRequest requestReconPaymentStatus = new ReconPaymentStatusRequest();
         requestReconPaymentStatus.setIdPayment(tagihanPembayaran.getIdPayment());
         requestReconPaymentStatus.setPaymentStatus("3");
+        requestReconPaymentStatus.setBankPayment(request.getBankName());
+        requestReconPaymentStatus.setSourceAccount(request.getSourceAccount());
         reconPaymentStatus(requestReconPaymentStatus);
         // } catch (Exception e) {
         // // Update payment status gagal = 2

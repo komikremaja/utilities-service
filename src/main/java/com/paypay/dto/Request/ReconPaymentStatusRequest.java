@@ -13,4 +13,6 @@ public class ReconPaymentStatusRequest {
     
     private BigDecimal idPayment;
     private String paymentStatus;
+    private String sourceAccount;
+    private String bankPayment;
 }
